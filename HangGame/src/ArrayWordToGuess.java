@@ -3,6 +3,8 @@ import java.util.Random;
 public class ArrayWordToGuess
 {
     private final String[] arrayWordToGuess = new String[99];
+    private String wordToGuess;
+    private String currentWord;
 
     private final String[] frenchWords = {
             "bonjour", "amour", "chat", "chien", "maison", "ecole", "voiture", "soleil",
@@ -37,5 +39,23 @@ public class ArrayWordToGuess
 
         randomNb = rand.nextInt(arrayWordToGuess.length);
         return arrayWordToGuess[randomNb];
+    }
+
+    public String getWordToGuess()
+    {
+        return wordToGuess;
+    }
+    public String getCurrentWord()
+    {
+        return currentWord;
+    }
+
+    public void initCurrentWord()
+    {
+        wordToGuess = getRandomWord();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < wordToGuess.length(); i++)
+            sb.append("_");
+        currentWord = sb.toString();
     }
 }
