@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class Game {
     public final ArrayWordToGuess arrayWordToGuess = new ArrayWordToGuess();
     public ArrayAlphabet arrayAlphabet = new ArrayAlphabet();
-    public int nbTry;
+    private int nbTry;
+    private int gameIsOver;
 
     private static final String[] HANGMAN_STAGES = {
             // Stage 0
@@ -72,35 +73,79 @@ public class Game {
                     "=========\n"
     };
 
-    private void gameLogic()
-    {
-        nbTry = 6;
+    private int gameLogic() {
         Scanner scanner = new Scanner(System.in);
-        int input;
+        String input;
+        char car;
+        boolean containsWord;
+        boolean containsAlphabet;
+        int indexWord;
+        int indexAlphabet;
+        int nb = 65;
+        String value;
 
-        System.out.println("Guess the word : " + arrayWordToGuess.getCurrentWord());
-        System.out.println(nbTry + " tries left!\n");
-        arrayAlphabet.initArrayAlphabet();
-        arrayAlphabet.displayArrayAlphabet();
-        System.out.print("Type your letter : ");
-        input = scanner.nextInt();
+        while (nbTry > 0)
+        {
+            System.out.println("Guess the word : " + arrayWordToGuess.getCurrentWord());
+            System.out.println(nbTry + " tries left!\n");
+            arrayAlphabet.displayArrayAlphabet();
+            System.out.print("Type your letter : ");
+            input = scanner.next();
+            car = input.charAt(0);
+            // Check if the list contains the target string
+            containsAlphabet = arrayAlphabet.getListAlphabet().contains(input);
 
+            if (containsAlphabet) {
+                indexAlphabet = (((int) input.charAt(0)) - nb);
+                value = arrayAlphabet.getListAlphabet().get(indexAlphabet);
+                car = value.charAt(0);
+                arrayAlphabet.getListAlphabet().remove(indexAlphabet);
+                nb--;
+            }
+            else
+            {
+                System.out.println("You already entered this letter");
+            }
+
+            //if (input.length() == 1)
+
+
+            // Convert the character to a string and check if it is present in the string
+            containsWord = arrayWordToGuess.getWordToGuess().contains(Character.toString(car));
+            if (containsWord)
+            {
+                indexWord = arrayWordToGuess.getWordToGuess().indexOf(car);
+                arrayWordToGuess.putLetter(indexWord, car);
+                System.out.println(arrayWordToGuess.getCurrentWord());
+            }
+            else
+            {
+                nbTry = nbTry - 1;
+            }
+        }
+
+        if (nbTry == 0)
+            gameIsOver = 1;
+
+        return (0);
     }
 
     private void gameLoop()
     {
-        //int gameIsOver = 0;
-
-        //while (gameIsOver == 0)
-        //{
+        gameIsOver = 0;
+        while (gameIsOver == 0)
+        {
             gameLogic();
-        //}
+        }
     }
     public void runGame()
     {
         System.out.println("Welcome to Hang Game\n");
         arrayWordToGuess.initArray();
         arrayWordToGuess.initCurrentWord();
+        nbTry = 6;
+        System.out.println(arrayWordToGuess.getWordToGuess());
+        arrayAlphabet.initArrayAlphabet();
         gameLoop();
     }
 }

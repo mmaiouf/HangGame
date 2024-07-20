@@ -7,21 +7,21 @@ public class ArrayWordToGuess
     private String currentWord;
 
     private final String[] frenchWords = {
-            "bonjour", "amour", "chat", "chien", "maison", "ecole", "voiture", "soleil",
-            "pomme", "livre", "plage", "neige", "fleur", "reve", "famille", "musique",
-            "montagne", "riviere", "ciel", "etoile", "arbre", "chocolat", "hiver", "ete",
-            "printemps", "automne", "vacances", "mer", "ocean", "foret", "ville", "village",
-            "jardin", "parc", "route", "pont", "bateau", "avion", "train", "bus",
-            "camion", "velo", "moto", "gare", "aeroport", "hopital", "police", "pompiers",
-            "eglise", "mosquee", "temple", "universite", "bibliotheque", "cinema",
-            "theatre", "restaurant", "cafe", "hotel", "banque", "magasin", "supermarche",
-            "marche", "boulangerie", "boucherie", "pharmacie", "poste", "bureau",
-            "usine", "ferme", "chateau", "musee", "zoo", "parc d'attractions",
-            "stade", "piscine", "plaine", "colline", "desert", "ile", "peninsule",
-            "continent", "pays", "region", "departement", "province", "capitale",
-            "centre-ville", "quartier", "rue", "avenue", "boulevard", "place",
-            "carrefour", "rond-point", "feu", "trottinette", "poussette", "skateboard",
-            "roller"
+            "BONJOUR", "AMOUR", "CHAT", "CHIEN", "MAISON", "ECOLE", "VOITURE", "SOLEIL",
+            "POMME", "LIVRE", "PLAGE", "NEIGE", "FLEUR", "REVE", "FAMILLE", "MUSIQUE",
+            "MONTAGNE", "RIVIERE", "CIEL", "ETOILE", "ARBRE", "CHOCOLAT", "HIVER", "ETE",
+            "PRINTEMPS", "AUTOMNE", "VACANCES", "MER", "OCEAN", "FORET", "VILLE", "VILLAGE",
+            "JARDIN", "PARC", "ROUTE", "PONT", "BATEAU", "AVION", "TRAIN", "BUS",
+            "CAMION", "VELO", "MOTO", "GARE", "AEROPORT", "HOPITAL", "POLICE", "POMPIERS",
+            "EGLISE", "MOSQUEE", "TEMPLE", "UNIVERSITE", "BIBLIOTHEQUE", "CINEMA",
+            "THEATRE", "RESTAURANT", "CAFE", "HOTEL", "BANQUE", "MAGASIN", "SUPERMARCHE",
+            "MARCHE", "BOULANGERIE", "BOUCHERIE", "PHARMACIE", "POSTE", "BUREAU",
+            "USINE", "FERME", "CHATEAU", "MUSEE", "ZOO", "PARC D'ATTRACTIONS",
+            "STADE", "PISCINE", "PLAINE", "COLLINE", "DESERT", "ILE", "PENINSULE",
+            "CONTINENT", "PAYS", "REGION", "DEPARTEMENT", "PROVINCE", "CAPITALE",
+            "CENTRE-VILLE", "QUARTIER", "RUE", "AVENUE", "BOULEVARD", "PLACE",
+            "CARREFOUR", "ROND-POINT", "FEU", "TROTTINETTE", "POUSSETTE", "SKATEBOARD",
+            "ROLLER"
     };
 
     public void initArray()
@@ -56,6 +56,13 @@ public class ArrayWordToGuess
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < wordToGuess.length(); i++)
             sb.append("_");
+        currentWord = sb.toString();
+    }
+
+    public void putLetter(int myIndex, char myCar)
+    {
+        StringBuilder sb = new StringBuilder(getCurrentWord());
+        sb.setCharAt(myIndex, myCar);
         currentWord = sb.toString();
     }
 }
