@@ -24,12 +24,13 @@ public class ArrayWordToGuess
             "ROLLER"
     };
 
-    public void initArray()
+    public String getWordToGuess()
     {
-        for (int i = 0; i < arrayWordToGuess.length; i++)
-        {
-            arrayWordToGuess[i] = frenchWords[i];
-        }
+        return wordToGuess;
+    }
+    public String getCurrentWord()
+    {
+        return currentWord;
     }
 
     public String getRandomWord()
@@ -41,13 +42,13 @@ public class ArrayWordToGuess
         return arrayWordToGuess[randomNb];
     }
 
-    public String getWordToGuess()
+
+    public void initArray()
     {
-        return wordToGuess;
-    }
-    public String getCurrentWord()
-    {
-        return currentWord;
+        for (int i = 0; i < arrayWordToGuess.length; i++)
+        {
+            arrayWordToGuess[i] = frenchWords[i];
+        }
     }
 
     public void initCurrentWord()
@@ -59,10 +60,18 @@ public class ArrayWordToGuess
         currentWord = sb.toString();
     }
 
-    public void putLetter(int myIndex, char myCar)
+    public void putLetter(char myCar)
     {
         StringBuilder sb = new StringBuilder(getCurrentWord());
-        sb.setCharAt(myIndex, myCar);
+        for (int i = 0; i < getCurrentWord().length(); i++)
+        {
+            System.out.println("wewe!");
+            if (getWordToGuess().charAt(i) == myCar)
+            {
+                System.out.println("j'y rentre!");
+                sb.setCharAt(i, myCar);
+            }
+        }
         currentWord = sb.toString();
     }
 }

@@ -73,16 +73,12 @@ public class Game {
                     "=========\n"
     };
 
-    private int gameLogic() {
+    private void gameLogic() {
         Scanner scanner = new Scanner(System.in);
         String input;
         char car;
         boolean containsWord;
         boolean containsAlphabet;
-        int indexWord;
-        int indexAlphabet;
-        int nb = 65;
-        String value;
 
         while (nbTry > 0)
         {
@@ -91,31 +87,32 @@ public class Game {
             arrayAlphabet.displayArrayAlphabet();
             System.out.print("Type your letter : ");
             input = scanner.next();
+
+            if (input.length() != 1)
+            {
+                System.out.println("You have entered a String instead of a character");
+                break;
+            }
             car = input.charAt(0);
-            // Check if the list contains the target string
             containsAlphabet = arrayAlphabet.getListAlphabet().contains(input);
 
             if (containsAlphabet) {
-                indexAlphabet = (((int) input.charAt(0)) - nb);
-                value = arrayAlphabet.getListAlphabet().get(indexAlphabet);
-                car = value.charAt(0);
-                arrayAlphabet.getListAlphabet().remove(indexAlphabet);
-                nb--;
+                System.out.println("\n\nYou typed : " + car);
+                arrayAlphabet.getListAlphabet().remove(input);
+                //nb++;
             }
             else
             {
                 System.out.println("You already entered this letter");
             }
 
-            //if (input.length() == 1)
 
 
             // Convert the character to a string and check if it is present in the string
             containsWord = arrayWordToGuess.getWordToGuess().contains(Character.toString(car));
             if (containsWord)
             {
-                indexWord = arrayWordToGuess.getWordToGuess().indexOf(car);
-                arrayWordToGuess.putLetter(indexWord, car);
+                arrayWordToGuess.putLetter(car);
                 System.out.println(arrayWordToGuess.getCurrentWord());
             }
             else
@@ -126,8 +123,6 @@ public class Game {
 
         if (nbTry == 0)
             gameIsOver = 1;
-
-        return (0);
     }
 
     private void gameLoop()
@@ -140,7 +135,7 @@ public class Game {
     }
     public void runGame()
     {
-        System.out.println("Welcome to Hang Game\n");
+        System.out.println("Welcome to Hangg Game\n");
         arrayWordToGuess.initArray();
         arrayWordToGuess.initCurrentWord();
         nbTry = 6;
