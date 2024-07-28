@@ -6,6 +6,7 @@ public class ArrayWordToGuess
     private String wordToGuess;
     private String currentWord;
 
+
     private final String[] frenchWords = {
             "BONJOUR", "AMOUR", "CHAT", "CHIEN", "MAISON", "ECOLE", "VOITURE", "SOLEIL",
             "POMME", "LIVRE", "PLAGE", "NEIGE", "FLEUR", "REVE", "FAMILLE", "MUSIQUE",
@@ -65,11 +66,10 @@ public class ArrayWordToGuess
         StringBuilder sb = new StringBuilder(getCurrentWord());
         for (int i = 0; i < getCurrentWord().length(); i++)
         {
-            System.out.println("wewe!");
             if (getWordToGuess().charAt(i) == myCar)
             {
-                System.out.println("j'y rentre!");
                 sb.setCharAt(i, myCar);
+                Game.nbLettersFound++;
             }
         }
         currentWord = sb.toString();

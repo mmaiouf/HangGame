@@ -7,6 +7,7 @@ public class Game {
     public ArrayAlphabet arrayAlphabet = new ArrayAlphabet();
     private int nbTry;
     private int gameIsOver;
+    public static int nbLettersFound = 0;
 
     private static final String[] HANGMAN_STAGES = {
             // Stage 0
@@ -80,7 +81,7 @@ public class Game {
         boolean containsWord;
         boolean containsAlphabet;
 
-        while (nbTry > 0)
+        while (nbTry > 0 && nbLettersFound != arrayWordToGuess.getCurrentWord().length())
         {
             System.out.println("Guess the word : " + arrayWordToGuess.getCurrentWord());
             System.out.println(nbTry + " tries left!\n");
@@ -88,27 +89,27 @@ public class Game {
             System.out.print("Type your letter : ");
             input = scanner.next();
 
+            // check if String
             if (input.length() != 1)
             {
                 System.out.println("You have entered a String instead of a character");
                 break;
             }
+
+
+            // check Alphabet
             car = input.charAt(0);
             containsAlphabet = arrayAlphabet.getListAlphabet().contains(input);
-
             if (containsAlphabet) {
                 System.out.println("\n\nYou typed : " + car);
                 arrayAlphabet.getListAlphabet().remove(input);
-                //nb++;
             }
             else
             {
                 System.out.println("You already entered this letter");
             }
 
-
-
-            // Convert the character to a string and check if it is present in the string
+            // check contains Word
             containsWord = arrayWordToGuess.getWordToGuess().contains(Character.toString(car));
             if (containsWord)
             {
@@ -116,13 +117,21 @@ public class Game {
                 System.out.println(arrayWordToGuess.getCurrentWord());
             }
             else
-            {
-                nbTry = nbTry - 1;
-            }
+                nbTry--;
         }
 
         if (nbTry == 0)
+        {
+            System.out.println("Loss !");
+            System.out.println("The word was " + arrayWordToGuess.getWordToGuess());
             gameIsOver = 1;
+        }
+
+        if (nbLettersFound == arrayWordToGuess.getCurrentWord().length())
+        {
+            System.out.println("You have won the game !");
+            gameIsOver = 1;
+        }
     }
 
     private void gameLoop()
