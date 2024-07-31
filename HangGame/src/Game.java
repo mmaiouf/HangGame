@@ -108,7 +108,7 @@ public class Game {
             if (containsAlphabet)
                 arrayAlphabet.getListAlphabet().remove(Character.toString(car));
             else
-                System.out.println("\n\nThere is no " + car + " the available car");
+                System.out.println("\n\nThere is no " + car + " from the available car");
 
         // check contains Word
             if (containsAlphabet)
