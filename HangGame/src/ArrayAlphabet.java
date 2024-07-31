@@ -3,7 +3,7 @@ import java.util.List;
 
 public class ArrayAlphabet
 {
-    private List<String> listAlphabet = new ArrayList<String>();
+    private final List<String> listAlphabet = new ArrayList<String>();
 
     public void initArrayAlphabet()
     {

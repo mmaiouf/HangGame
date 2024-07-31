@@ -5,24 +5,27 @@ public class ArrayWordToGuess
     private final String[] arrayWordToGuess = new String[99];
     private String wordToGuess;
     private String currentWord;
-
-
     private final String[] frenchWords = {
-            "BONJOUR", "AMOUR", "CHAT", "CHIEN", "MAISON", "ECOLE", "VOITURE", "SOLEIL",
-            "POMME", "LIVRE", "PLAGE", "NEIGE", "FLEUR", "REVE", "FAMILLE", "MUSIQUE",
-            "MONTAGNE", "RIVIERE", "CIEL", "ETOILE", "ARBRE", "CHOCOLAT", "HIVER", "ETE",
-            "PRINTEMPS", "AUTOMNE", "VACANCES", "MER", "OCEAN", "FORET", "VILLE", "VILLAGE",
-            "JARDIN", "PARC", "ROUTE", "PONT", "BATEAU", "AVION", "TRAIN", "BUS",
-            "CAMION", "VELO", "MOTO", "GARE", "AEROPORT", "HOPITAL", "POLICE", "POMPIERS",
-            "EGLISE", "MOSQUEE", "TEMPLE", "UNIVERSITE", "BIBLIOTHEQUE", "CINEMA",
-            "THEATRE", "RESTAURANT", "CAFE", "HOTEL", "BANQUE", "MAGASIN", "SUPERMARCHE",
-            "MARCHE", "BOULANGERIE", "BOUCHERIE", "PHARMACIE", "POSTE", "BUREAU",
-            "USINE", "FERME", "CHATEAU", "MUSEE", "ZOO", "PARC D'ATTRACTIONS",
-            "STADE", "PISCINE", "PLAINE", "COLLINE", "DESERT", "ILE", "PENINSULE",
-            "CONTINENT", "PAYS", "REGION", "DEPARTEMENT", "PROVINCE", "CAPITALE",
-            "CENTRE-VILLE", "QUARTIER", "RUE", "AVENUE", "BOULEVARD", "PLACE",
-            "CARREFOUR", "ROND-POINT", "FEU", "TROTTINETTE", "POUSSETTE", "SKATEBOARD",
-            "ROLLER"
+            "POMPIER", "AMIS", "VOYAGE", "TRAVAIL", "LUMIERE", "JOUR", "NUIT",
+            "HEURE", "MINUTE", "SECONDE", "CLASSE", "PROFESSEUR", "ELEVE",
+            "EQUIPE", "SPORT", "FOOTBALL", "BASKETBALL", "NATATION", "TENNIS",
+            "VELO", "MOTO", "VOITURE", "CAMION", "BUS", "TRAIN", "TRAMWAY",
+            "AVION", "BATEAU", "PORT", "AEROPORT", "GARE", "METRO", "QUAI",
+            "BOUTIQUE", "CENTRE COMMERCIAL", "LIBRAIRIE", "PHARMACIE", "HOPITAL",
+            "CLINIQUE", "CABINET", "DOCTEUR", "MEDECIN", "INFIRMIERE", "ORDONNANCE",
+            "MEDICAMENT", "CHIRURGIE", "URGENTISTE", "AMBULANCE", "POLICIER",
+            "GENDARME", "SECURITE", "CRIMINALITE", "VOL", "AGRESSION", "VICTIME",
+            "TEMOIN", "SUSPECT", "ENQUETE", "PROCES", "TRIBUNAL", "AVOCAT", "JUGE",
+            "COUR", "PRISON", "DETENU", "LIBERATION", "JUSTICE", "PEINE", "VERDICT",
+            "ACCUSATION", "DEFENSE", "EVIDENCE", "TEMOIGNAGE", "PREUVE", "ALIBI",
+            "MOBILE", "MOTIF", "DELINQUANCE", "CRIMINALITE", "FRAUDE", "ESCROQUERIE",
+            "CYBERCRIMINALITE", "HACKER", "CYBERSECURITE", "ENQUETEUR", "AGENT",
+            "OFFICIER", "COMMISSIONNAIRE", "DIRECTEUR", "PREFET", "MINISTRE",
+            "PRESIDENT", "GOUVERNEMENT", "ASSEMBLEE", "SENAT", "PARLEMENT", "DEPUTE",
+            "SENATEUR", "LEGISLATION", "REGLEMENT", "LOI", "CONSTITUTION", "DECRET",
+            "ARRETE", "ORDONNANCE", "JURIDICTION", "COUR SUPREME", "CONSEIL D'ETAT",
+            "TRIBUNAL ADMINISTRATIF", "JURISTE", "AVOCAT", "NOTAIRE", "HUISSIER",
+            "MAGISTRAT", "PROCUREUR", "ENQUETEUR", "EXPERT", "TEMOIN"
     };
 
     public String getWordToGuess()
@@ -33,7 +36,6 @@ public class ArrayWordToGuess
     {
         return currentWord;
     }
-
     public String getRandomWord()
     {
         int randomNb;
@@ -42,8 +44,6 @@ public class ArrayWordToGuess
         randomNb = rand.nextInt(arrayWordToGuess.length);
         return arrayWordToGuess[randomNb];
     }
-
-
     public void initArray()
     {
         for (int i = 0; i < arrayWordToGuess.length; i++)
